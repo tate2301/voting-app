@@ -49,16 +49,12 @@ const usePollsResults = () => {
 export default function ResultsPage() {
   const res = usePollsResults();
 
-  const results = useMemo(() => {
-    const data = Array.from(res.results.entries()).map(([key, value]) => ({
-      id: key,
-      candidates: value,
-    }));
+  const results = Array.from(res.results.entries()).map(([key, value]) => ({
+    id: key,
+    candidates: value,
+  }));
 
-    return data;
-  }, [res]);
-
-  console.log({ length: res.polls.length, results: res.results.size });
+  console.log({ length: res.polls.length, results });
 
   return (
     <SafeAreaContainer>
