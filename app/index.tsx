@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     paddingTop: "50%",
     width: "100%",
     gap: 64,
+    padding: 8,
+    paddingBottom: 64,
   },
   title: {
     fontSize: 36,

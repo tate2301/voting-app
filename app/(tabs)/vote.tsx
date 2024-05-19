@@ -2,6 +2,7 @@ import { colors } from "@/assets/styles";
 import { typography } from "@/assets/styles/typography";
 import Position from "@/components/Position";
 import SafeAreaContainer from "@/components/SafeAreaContainer";
+import { usePollWithCandidates } from "@/hooks/usePollWithCandidates";
 import { db } from "@/lib/firebase";
 import { Candidate, Position as TPosition } from "@/lib/types";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
@@ -18,42 +19,7 @@ const styles = StyleSheet.create({
 });
 
 export default function VotePage() {
-  const [positions, setPositions] = useState<TPosition[]>([]);
-
-  const getCandidates = async (positionId: string): Promise<Candidate[]> => {
-    const candidatesRef = collection(db, `polls/${positionId}/candidates`);
-    const candidatesSnapshot = await getDocs(candidatesRef);
-    const candidatesData = candidatesSnapshot.docs.map(
-      (doc) =>
-        ({
-          id: doc.id,
-          ...doc.data(),
-        } as Candidate)
-    );
-    return candidatesData;
-  };
-
-  const fetchData = async () => {
-    const positionsRef = collection(db, "polls");
-    const positionsSnapshot = await getDocs(positionsRef);
-    const positionsData = positionsSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    const positionsWithCandidates = await Promise.all(
-      positionsData.map(async (position) => {
-        const candidates = await getCandidates(position.id);
-        return { ...position, candidates };
-      })
-    );
-
-    setPositions(positionsWithCandidates as TPosition[]);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const positions = usePollWithCandidates();
 
   return (
     <SafeAreaContainer>
@@ -69,7 +35,15 @@ export default function VotePage() {
         <View style={{ marginTop: 64 }}>
           <Text style={styles.title}>Welcome to the 2024 SRC elections.</Text>
         </View>
-        <View style={{ flex: 1, gap: 32, marginTop: 64, width: "100%" }}>
+        <View
+          style={{
+            flex: 1,
+            gap: 32,
+            marginTop: 64,
+            width: "100%",
+            paddingBottom: 64,
+          }}
+        >
           {positions.map((position) => (
             <Position key={position.id} {...position} />
           ))}

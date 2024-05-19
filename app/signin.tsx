@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.border,
     borderWidth: 1,
     fontWeight: "500",
+    color: colors.heading,
   },
   primaryButton: {
     backgroundColor: colors.heading,
@@ -53,7 +54,7 @@ export default function SignIn() {
 
   useEffect(() => {
     navigation.setOptions({
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -87,7 +88,16 @@ export default function SignIn() {
   return (
     <>
       <SafeAreaContainer>
-        <View style={{ flex: 1, width: "100%", paddingTop: 64, gap: 64 }}>
+        <View
+          style={{
+            flex: 1,
+            width: "100%",
+            paddingTop: 64,
+            gap: 64,
+            padding: 8,
+            paddingBottom: 64,
+          }}
+        >
           <Text style={typography.title}>Log in</Text>
           <View style={{ gap: 16 }}>
             <TextInput

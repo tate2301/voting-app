@@ -37,7 +37,9 @@ export default function Position(props: TPosition) {
   const router = useRouter();
 
   const onNav = () =>
-    router.push(`/poll/${props.id}?position=${props.position}`);
+    router.push(
+      `/poll/${props.id}?position=${props.position}&slug=${props.id}`
+    );
   return (
     <View style={styles.container}>
       <View>

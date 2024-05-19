@@ -35,7 +35,15 @@ const styles = StyleSheet.create({
 export default function Welcome() {
   return (
     <SafeAreaContainer>
-      <View style={{ flex: 1, width: "100%", justifyContent: "flex-end" }}>
+      <View
+        style={{
+          flex: 1,
+          width: "100%",
+          justifyContent: "flex-end",
+          padding: 8,
+          paddingBottom: 64,
+        }}
+      >
         <View>
           <Text style={styles.title}>Ready to vote?</Text>
           <Text style={styles.actionText}>A few things to keep in mind</Text>
