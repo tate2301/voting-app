@@ -1,5 +1,7 @@
 import { KeyboardAvoidingView, Platform, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { LinearGradient } from "expo-linear-gradient";
+import { colors } from "@/assets/styles";
 
 export default function SafeAreaContainer({
   children,

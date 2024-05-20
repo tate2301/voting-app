@@ -5,6 +5,7 @@ import { Link, useRouter } from "expo-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import {
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
   actionText: {
     fontSize: 16,
     color: colors.paragraph,
+    textAlign: "center",
   },
   primaryButton: {
     backgroundColor: "#0090FF",
@@ -68,7 +70,18 @@ export default function Start() {
     <SafeAreaContainer>
       <View style={styles.container}>
         <View style={{ gap: 8 }}>
-          <Text style={{ ...styles.title, fontWeight: 700 }}>
+          <Image
+            source={require("@/assets/images/Union.png")}
+            style={{
+              width: 225,
+              height: 80,
+              marginBottom: 32,
+              marginHorizontal: "auto",
+            }}
+          />
+          <Text
+            style={{ ...styles.title, fontWeight: 700, textAlign: "center" }}
+          >
             Vote for your favorite candidate.
           </Text>
           <Text style={styles.actionText}>

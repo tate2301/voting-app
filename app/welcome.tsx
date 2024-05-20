@@ -1,7 +1,7 @@
 import { colors } from "@/assets/styles";
 import SafeAreaContainer from "@/components/SafeAreaContainer";
 import { Link } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
   title: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   primaryButton: {
-    backgroundColor: colors.heading,
+    backgroundColor: colors.primary,
     borderRadius: 64,
     color: colors.white,
     height: 40,
@@ -45,6 +45,14 @@ export default function Welcome() {
         }}
       >
         <View>
+          <Image
+            source={require("@/assets/images/Union.png")}
+            style={{
+              width: 200,
+              height: 70,
+              marginBottom: 256,
+            }}
+          />
           <Text style={styles.title}>Ready to vote?</Text>
           <Text style={styles.actionText}>A few things to keep in mind</Text>
         </View>

@@ -32,7 +32,7 @@ export default function ProfilePage() {
           <View
             style={{
               padding: 16,
-              backgroundColor: "#0090FF",
+              backgroundColor: colors.heading,
               borderRadius: 16,
               width: "100%",
             }}

@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     color: colors.heading,
   },
   primaryButton: {
-    backgroundColor: colors.heading,
+    backgroundColor: colors.primary,
     borderRadius: 64,
     color: colors.white,
     height: 40,
@@ -104,6 +104,7 @@ export default function SignIn() {
               onChange={(text) => setEmail(text.nativeEvent.text)}
               value={email}
               inputMode="email"
+              placeholderTextColor={colors.mute}
               keyboardType="email-address"
               textContentType="emailAddress"
               autoComplete="email"
@@ -118,6 +119,7 @@ export default function SignIn() {
             <TextInput
               onChange={(text) => setPassword(text.nativeEvent.text)}
               value={password}
+              placeholderTextColor={colors.mute}
               style={{
                 ...styles.input,
                 borderColor:
@@ -133,18 +135,20 @@ export default function SignIn() {
             )}
           </View>
         </View>
-        <Pressable
-          disabled={loading}
-          onPress={onSignIn}
-          style={{
-            ...styles.primaryButton,
-            backgroundColor: loading ? colors.mute : colors.heading,
-          }}
-        >
-          <Text style={{ color: colors.white, fontWeight: "700" }}>
-            {loading ? "Please wait..." : "Log in"}
-          </Text>
-        </Pressable>
+        <View style={{ marginBottom: 64, width: "100%", padding: 8 }}>
+          <Pressable
+            disabled={loading}
+            onPress={onSignIn}
+            style={{
+              ...styles.primaryButton,
+              backgroundColor: loading ? colors.mute : colors.heading,
+            }}
+          >
+            <Text style={{ color: colors.white, fontWeight: "700" }}>
+              {loading ? "Please wait..." : "Log in"}
+            </Text>
+          </Pressable>
+        </View>
       </SafeAreaContainer>
     </>
   );

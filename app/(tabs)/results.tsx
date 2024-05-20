@@ -47,12 +47,19 @@ const usePollsResults = () => {
 };
 
 export default function ResultsPage() {
+  const [key, setKey] = useState(0.0);
   const res = usePollsResults();
 
   const results = Array.from(res.results.entries()).map(([key, value]) => ({
     id: key,
     candidates: value,
   }));
+
+  useEffect(() => {
+    setTimeout(() => {
+      setKey(Math.random());
+    }, 1500);
+  }, [res.polls, res.results, results]);
 
   console.log({ length: res.polls.length, results });
 

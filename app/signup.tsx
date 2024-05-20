@@ -54,7 +54,7 @@ export default function SignUp() {
 
   useEffect(() => {
     navigation.setOptions({
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -85,10 +85,19 @@ export default function SignUp() {
   return (
     <>
       <SafeAreaContainer>
-        <View style={{ flex: 1, width: "100%", paddingTop: 64, gap: 64 }}>
+        <View
+          style={{
+            flex: 1,
+            width: "100%",
+            paddingTop: 64,
+            gap: 64,
+            padding: 8,
+          }}
+        >
           <Text style={typography.title}>Create an account</Text>
           <View style={{ gap: 16 }}>
             <TextInput
+              placeholderTextColor={colors.mute}
               onChange={(text) => setFullName(text.nativeEvent.text)}
               value={fullName}
               style={{
@@ -101,6 +110,7 @@ export default function SignUp() {
               onChange={(text) => setEmail(text.nativeEvent.text)}
               value={email}
               inputMode="email"
+              placeholderTextColor={colors.mute}
               keyboardType="email-address"
               textContentType="emailAddress"
               autoComplete="email"
@@ -113,6 +123,7 @@ export default function SignUp() {
               placeholder="Email"
             />
             <TextInput
+              placeholderTextColor={colors.mute}
               onChange={(text) => setPassword(text.nativeEvent.text)}
               value={password}
               style={{
@@ -124,18 +135,20 @@ export default function SignUp() {
             />
           </View>
         </View>
-        <Pressable
-          disabled={loading}
-          onPress={onSignUp}
-          style={{
-            ...styles.primaryButton,
-            backgroundColor: loading ? colors.mute : colors.heading,
-          }}
-        >
-          <Text style={{ color: colors.white, fontWeight: "700" }}>
-            {loading ? "Please wait..." : "Create account"}
-          </Text>
-        </Pressable>
+        <View style={{ marginBottom: 64, width: "100%", padding: 8 }}>
+          <Pressable
+            disabled={loading}
+            onPress={onSignUp}
+            style={{
+              ...styles.primaryButton,
+              backgroundColor: loading ? colors.mute : colors.heading,
+            }}
+          >
+            <Text style={{ color: colors.white, fontWeight: "700" }}>
+              {loading ? "Please wait..." : "Create account"}
+            </Text>
+          </Pressable>
+        </View>
       </SafeAreaContainer>
     </>
   );
